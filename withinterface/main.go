@@ -45,9 +45,15 @@ func main() {
 		fmt.Println(tax)
 	*/
 
-	calculators := []taxSystem{&indianTax{taxPercentage: 30, income: 1000}, &singaporeTax{taxPercentage: 10, income: 2000}}
-	for _, calculator := range calculators {
-		tax := calculator.calculateTax()
-		fmt.Println(tax)
+	systems := []taxSystem{&indianTax{taxPercentage: 30, income: 1000}, &singaporeTax{taxPercentage: 10, income: 2000}}
+	calculateTotalTax(systems)
+}
+
+func calculateTotalTax(taxSystems []taxSystem) {
+	total := 0
+	for _, system := range taxSystems {
+		tax := system.calculateTax()
+		total += tax
 	}
+	fmt.Println(total)
 }
