@@ -1,0 +1,15 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: go-test
+    image: golang:1.17
+    commands:
+      - cd tax
+      - go test
+  - name: go-build
+    image: golang:1.17
+    commands:
+      - go build
